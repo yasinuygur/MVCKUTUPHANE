@@ -1,0 +1,38 @@
+﻿@using MVCKUTUPHANE.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBLUYE>
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Kütüphane Üye Sayfası</h2>
+
+<table class="table table-bordered">
+	<tr>
+		<th>ID</th>
+		<th>Adı</th>
+		<th>Soyadı</th>
+		<th>Okul</th>
+		<th>SİL</th>
+		<th>GÜNCELLE</th>
+		<th>Kitap Geçmişi</th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@item.ID</td>
+			<td>@item.AD</td>
+			<td>@item.SOYAD</td>
+			<td>@item.OKUL</td>
+			<td><a href="/Uye/UyeSil/@item.ID" class="btn btn-danger">Sil</a></td>
+			<td><a href="/Uye/UyeGetir/@item.ID" class="btn btn-success">Düzenle</a></td>
+			<td><a href="/Uye/UyeKitapGecmis/@item.ID" class="btn btn-warning" style="color:white">Kitap Geçmişi</a></td>
+		</tr>
+	}
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new {sayfa}))
+<a href="/Uye/UyeEkle/" class="btn btn-info">Yeni Üye Ekle</a>
+

@@ -1,0 +1,30 @@
+﻿@using MVCKUTUPHANE.Models.Entity
+@model List<TBLPERSONEL>
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Kütüphane Personel Sayfası</h2>
+
+<table class="table table-bordered">
+	<tr>
+		<th>ID</th>
+		<th>PERSONEL</th>
+		<th>SİL</th>
+		<th>GÜNCELLE</th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@item.ID</td>
+			<td>@item.PERSONEL</td>
+			<td><a href="/Personel/PersonelSil/@item.ID" class="btn btn-danger">Sil</a></td>
+			<td><a href="/Personel/PersonelGetir/@item.ID" class="btn btn-success">Düzenle</a></td>
+		</tr>
+	}
+
+</table>
+<a href="/Personel/PersonelEkle/" class="btn btn-info">Yeni Personel Ekle</a>
+

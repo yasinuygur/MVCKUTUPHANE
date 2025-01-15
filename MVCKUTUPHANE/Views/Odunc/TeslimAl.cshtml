@@ -1,0 +1,34 @@
+﻿@model MVCKUTUPHANE.Models.Entity.TBLHAREKET
+@{
+	ViewBag.Title = "TeslimAl";
+	Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Kitap İade Sayfası</h2>
+
+@using (Html.BeginForm("OduncGuncelle", "Odunc", FormMethod.Post))
+{
+	<div class="form-control">
+		<label>Hareket ID</label>
+		@Html.TextBoxFor(k => k.ID, new { @class = "form-control" })
+		<br />
+		<label>Kitap Adı</label>
+		@Html.TextBoxFor(k => k.TBLKITAP.AD, new { @class = "form-control" })
+		<label>Personel Adı</label>
+		@Html.TextBoxFor(k => k.TBLPERSONEL.PERSONEL, new { @class = "form-control" })
+		<label>Üye</label>
+		@Html.TextBoxFor(k => k.TBLUYE.AD, new { @class = "form-control" })
+		<label>Alış Tarihi</label>
+		@Html.TextBoxFor(k => k.ALISTARIHI, "{0: dd.MM.yyyy}", new { @class = "form-control" })
+		<label>Normal Teslim Tarihi</label>
+		@Html.TextBoxFor(k => k.IADETARIHI, "{0: dd.MM.yyyy}", new { @class = "form-control" })
+		<label>Üyeni Teslim Ettiği Tarih</label>
+		<input type="text" class="form-control" name="UYEGETIRTARIH" value="@DateTime.Now.ToShortDateString()"/>
+		<br />
+		<label>Geç gelen gün sayısı</label>
+		<input type="text" class="form-control" id="Gecinput" value="@ViewBag.dgr"/>
+	</div>
+	<div>
+		<button class="btn btn-primary">Kitabı Teslim Al</button>
+	</div>
+}

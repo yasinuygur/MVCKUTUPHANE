@@ -1,0 +1,29 @@
+﻿@using MVCKUTUPHANE.Models.Entity
+@model List<TBLKATEGORI>
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Kütüphane Kategori Sayfası</h2>
+
+<table class="table table-bordered">
+	<tr>
+		<th>ID</th>
+		<th>AD</th>
+		<th>SİL</th>
+		<th>GÜNCELLE</th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@item.ID</td>
+			<td>@item.AD</td>
+			<td><a href="/Kategori/DeleteCategory/@item.ID" class="btn btn-danger">Sil</a></td>
+			<td><a href="/Kategori/GetCategory/@item.ID" class="btn btn-success">Düzenle</a></td>
+		</tr>
+	}
+
+</table>
+<a href="/Kategori/AddCategory/" class="btn btn-info">Yeni Kategori Ekle</a>

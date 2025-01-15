@@ -1,0 +1,87 @@
+﻿
+@{
+	Layout = null;
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		body {
+			font-family: "Lato", sans-serif;
+		}
+
+		.sidebar {
+			height: 100%;
+			width: 240px;
+			position: fixed;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			background-color: #111;
+			overflow-x: hidden;
+			padding-top: 16px;
+		}
+
+			.sidebar a {
+				padding: 6px 8px 6px 16px;
+				text-decoration: none;
+				font-size: 20px;
+				color: #818181;
+				display: block;
+			}
+
+				.sidebar a:hover {
+					color: #f1f1f1;
+				}
+
+		.main {
+			margin-left: 240px; /* Same as the width of the sidenav */
+			padding: 0px 10px;
+		}
+
+		@@media screen and (max-height: 450px) {
+			.sidebar {
+				padding-top: 15px;
+			}
+
+				.sidebar a {
+					font-size: 18px;
+				}
+		}
+	</style>
+</head>
+<body>
+
+	<div class="sidebar">
+		<a href="Index"><i class="fa fa-fw fa-home"></i> Anasayfa</a>
+		<a href="/Kategori/Index/"><i class="fa fa-fw fa-list"></i> Kategoriler</a>
+		<a href="/Kitap/Index/"><i class="fa fa-fw fa-book"></i> Kitaplar</a>
+		<a href="/Yazar/Index/"><i class="fa fa-fw fa-pencil"></i> Yazarlar</a>
+		<a href="/Uye/Index/"><i class="fa fa-fw fa-group"></i> Üyeler</a>
+		<a href="/Personel/Index/"><i class="fa fa-fw fa-envelope"></i> Personeller</a>
+		@if (User.IsInRole("A"))
+		{
+			<a href="/Odunc/OduncVer/"><i class="fa fa-fw fa-mail-forward"></i> Kitap Ödünç Verme</a>
+			<a href="/Odunc/Index/"><i class="fa fa-fw fa-reply"></i> Kitap Teslim Alma</a>
+		}
+		<a href="/Istatistik/Index/"><i class="fa fa-fw fa-pie-chart"></i> İstatistikler</a>
+		<a href="/Duyuru/Index/"><i class="fa fa-fw fa-euro"></i> Duyuru</a>
+		<a href="/Kasa/Index/"><i class="fa fa-fw fa-euro"></i> Kasa</a>
+		<a href="/Islem/Index/"><i class="fa fa-fw fa-dashboard"></i> İşlemler</a>
+		<a href="/Istatistik/Hava/"><i class="fa fa-fw fa-cloud"></i> Hava Raporu</a>
+		<a href="/Istatistik/HavaKart/"><i class="fa fa-fw fa-bar-chart"></i> Hava Kartları</a>
+		<a href="/Istatistik/Galeri/"><i class="fa fa-fw fa-photo"></i> Galeri</a>
+		<a href="/Istatistik/LinqKart/"><i class="fa fa-fw fa-photo"></i> Kartlar</a>
+		<a href="/Vitrin/Index/"><i class="fa fa-fw fa-gift"></i> Vitrin</a>
+		<a href="/Grafik/Index/"><i class="fa fa-fw fa-bar-chart-o"></i> Grafikler</a>
+		<a href="/Ayarlar/Index/"><i class="fa fa-fw fa-gears"></i> Ayarlar</a>
+		<a href="/Panelim/LogOut/"><i class="fa fa-fw fa-power-off"></i> Çıkış</a>
+	</div>
+	<div class="main">
+		@RenderBody()
+	</div>
+</body>
+</html>

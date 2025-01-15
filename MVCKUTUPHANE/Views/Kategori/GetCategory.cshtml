@@ -1,0 +1,22 @@
+﻿@model MVCKUTUPHANE.Models.Entity.TBLKATEGORI
+@{
+	ViewBag.Title = "GetCategory";
+	Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Kategori Düzenleme Sayfası</h2>
+
+@using (Html.BeginForm("EditCategory", "Kategori", FormMethod.Post))
+{
+	<div class="form-control">
+		@Html.LabelFor(k => k.ID)
+		@Html.TextBoxFor(k => k.ID, new { @class = "form-control" })
+		<br />
+		@Html.LabelFor(k => k.AD)
+		@Html.TextBoxFor(k => k.AD, new { @class = "form-control" })
+	</div>
+	<div>
+		<button class="btn btn-primary">Güncelle</button>
+	</div>
+}
+

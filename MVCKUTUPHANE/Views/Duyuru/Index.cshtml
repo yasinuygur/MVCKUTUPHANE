@@ -1,0 +1,38 @@
+﻿@using MVCKUTUPHANE.Models.Entity
+@model List<TBLDUYURU>
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/Layout.cshtml";
+	string renk = "";
+}
+
+<h2>Duyurular</h2>
+
+<table class="table table-bordered">
+	<tr>
+		<th>ID</th>
+		<th>Kategori</th>
+		<th>Tarih</th>
+		<th>Sil</th>
+		<th>İçerik</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		if (item.KATEGORI=="Yeni Kitap")
+		{
+			renk = "bg-info text-white";
+		}
+		if (item.KATEGORI == "Eski Kitap")
+		{
+			renk = "bg-warning text-white";
+		}
+		<tr class="@renk">
+			<td>@item.ID</td>
+			<td>@item.KATEGORI</td>
+			<td>@Convert.ToDateTime(item.TARIH).ToString("dd/MM/yyyy")</td>
+			<td><a href="/Duyuru/DuyuruSil/@item.ID" class="btn btn-danger">Sil</a></td>
+			<td><a href="/Duyuru/DuyuruDetay/" class="btn btn-success">Detaylar</a></td>
+		</tr>
+	}
+</table>
+<a href="/Duyuru/DuyuruEkle/" class="btn btn-info">Yeni Duyuru Ekle</a>

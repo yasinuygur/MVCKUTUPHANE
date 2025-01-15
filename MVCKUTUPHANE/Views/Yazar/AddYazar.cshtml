@@ -1,0 +1,28 @@
+﻿@model MVCKUTUPHANE.Models.Entity.TBLYAZAR
+@{
+    ViewBag.Title = "AddYazar";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Yazar Ekleme Sayfası</h2>
+
+<form class="form-group" method="post">
+	<div style="margin-top:15px">
+		<label>Yazar Adı</label>
+		@Html.TextBoxFor(y => y.AD, new { @class = "form-control" })
+		@Html.ValidationMessageFor(y=>y.AD)
+	</div>
+	<div style="margin-top:15px">
+		<label>Soyadı</label>
+		@Html.TextBoxFor(y => y.SOYAD, new { @class = "form-control" })
+		@Html.ValidationMessageFor(y => y.SOYAD)
+	</div>
+	<div style="margin-top:15px">
+		<label>Detay Bilgileri</label>
+		@Html.TextAreaFor(y => y.DETAY, new { @class = "form-control" })
+	</div>
+	<div style="margin-top:15px">
+		<button class="btn btn-info">Kaydet</button>
+		
+	</div>
+</form>

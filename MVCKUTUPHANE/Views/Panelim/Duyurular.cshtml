@@ -1,0 +1,24 @@
+﻿@using MVCKUTUPHANE.Models.Entity
+@model List<TBLDUYURU>
+@{
+	ViewBag.Title = "Duyurular";
+	Layout = "~/Views/Shared/_LayoutPanelim.cshtml";
+}
+
+<h2>Duyurular</h2>
+
+<table class="table table-bordered">
+	<tr>
+		<th>Kategori</th>
+		<th>Tarih</th>
+		<th>İçerik</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@item.KATEGORI</td>
+			<td>@item.TARIH</td>
+			<td>@item.ICERIK</td>
+		</tr>
+	}
+</table>

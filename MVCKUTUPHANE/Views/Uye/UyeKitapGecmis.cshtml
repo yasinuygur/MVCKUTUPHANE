@@ -1,0 +1,26 @@
+﻿@using MVCKUTUPHANE.Models.Entity
+@model List<TBLHAREKET>
+@{
+    ViewBag.Title = "UyeKitapGecmis";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Üye : @ViewBag.uye</h2>
+<br />
+<table class="table table-danger">
+    <tr>
+        <th>Kitap</th>
+        <th>Personel</th>
+        <th>Alış</th>
+        <th>İade</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.TBLKITAP.AD</td>
+            <td>@item.TBLPERSONEL.PERSONEL</td>
+            <td>@Convert.ToDateTime(item.ALISTARIHI).ToString("dd/MM/yyyy")</td>
+			<td>@Convert.ToDateTime(item.UYEGETIRTARIH).ToString("dd/MM/yyyy")</td>
+        </tr>
+    }
+</table>

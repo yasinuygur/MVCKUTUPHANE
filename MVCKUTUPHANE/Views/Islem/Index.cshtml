@@ -1,0 +1,39 @@
+﻿@using MVCKUTUPHANE.Models.Entity
+@model List<TBLHAREKET>
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Teslim Alınan Kitap Sayfası</h2>
+@using (Html.BeginForm("Index", "Kitap", FormMethod.Post))
+{
+	<div style="margin-bottom:15px; margin-top:15px;">
+		<b>Aranacak Kitap Adını Giriniz: </b> @Html.TextBox("p")
+		<input type="submit" value="Ara" />
+	</div>
+}
+
+<table class="table table-bordered">
+	<tr>
+		<th>İşlem ID</th>
+		<th>Kitap Adı</th>
+		<th>Üye</th>
+		<th>Personel</th>
+		<th>Alış Tarihi</th>
+		<th>Üye İade Tarihi</th>
+		<th>Teslim Al</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@item.ID</td>
+			<td>@item.TBLKITAP.AD</td>
+			<td>@item.TBLUYE.AD &nbsp; @item.TBLUYE.SOYAD</td>
+			<td>@item.TBLPERSONEL.PERSONEL </td>
+			<td>@Convert.ToDateTime(item.UYEGETIRTARIH).ToString("dd/MM/yyyy")</td>
+			<td>@Convert.ToDateTime(item.IADETARIHI).ToString("dd/MM/yyyy")</td>
+			<td><a href="/Odunc/TeslimAl/@item.ID" class="btn btn-danger">Detaylar</a></td>
+		</tr>
+	}
+</table>
